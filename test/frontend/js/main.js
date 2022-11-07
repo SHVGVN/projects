@@ -18,64 +18,56 @@
 
 
 // Lesson 2 
-
-
-let countinueTest = true;
-let operation = "";
+const message = "Где то ошибка, пробуй еще.";
 do{
-    operation = +prompt('Выберите цифру операции из списка ниже:\n1)+\n2)-\n3)/\n4)*\n5)сos\n6)sin');
+    let operation = +prompt('Выберите цифру операции из списка ниже:\n1)+\n2)-\n3)/\n4)*\n5)сos\n6)sin');
     if( operation !== operation ){
-        console.log("Где то ошибка, пробуй еще."); 
-        alert("Где то ошибка, пробуй еще.");
+        console.log("1"); 
+        // alert(message);
         break;
     } 
     let numberA = +prompt('Число А');
-    switch(operation){
-        case 1: {
-            let numberB = +prompt('Число B');
-            const formula1 = numberA + numberB;
-            console.log(formula1); 
-            alert(`Ваш ответ: ${formula1}`);
-        } break;
-        case 2: {
-            let numberB = +prompt('Число B');
-            const formula2 = numberA - numberB;
-            console.log(formula2); 
-            alert(`Ваш ответ: ${formula2}`);
-        } break;
-        case 3: { 
-            let numberB = +prompt('Число B');
-            const formula3 = numberA / numberB;
-            console.log(formula3); 
-            alert(`Ваш ответ: ${formula3}`);
-        } break;
-        case 4: {
-            let numberB = +prompt('Число B');
-            const formula4 = numberA * numberB;
-            console.log(formula4); 
-            alert(`Ваш ответ: ${formula4}`);
-        } break;
-        case 5: { 
-            const formula5 = Math.cos(numberA); 
-            console.log(formula5); 
-            alert(`Ваш ответ: ${formula5}`);
-        } break;
-        case 6: { 
-            const formula6 = Math.sin(numberA);
-            console.log(formula6); 
-            alert(`Ваш ответ: ${formula6}`);
-            
-        } break;
-        default: { 
-            console.log("Где то ошибка, пробуй еще."); 
-            alert("Где то ошибка, пробуй еще.") 
-        } break;
+    if(operation !== 5 || operation !==6){
+        switch(operation){
+            case 1: {
+                let numberB = +prompt('Число B');
+                const formula1 = numberA + numberB;
+                console.log(`Ваш ответ: ${formula1}`); 
+                alert(`Ваш ответ: ${formula1}`);
+            } break;
+            case 2: {
+                let numberB = +prompt('Число B');
+                const formula2 = numberA - numberB;
+                console.log(`Ваш ответ: ${formula2}`); 
+                alert(`Ваш ответ: ${formula2}`);
+            } break;
+            case 3: { 
+                let numberB = +prompt('Число B');
+                const formula3 = numberA / numberB;
+                console.log(`Ваш ответ: ${formula3}`); 
+                alert(`Ваш ответ: ${formula3}`);
+            } break;
+            case 4: {
+                let numberB = +prompt('Число B');
+                const formula4 = numberA * numberB;
+                console.log(`Ваш ответ: ${formula4}`); 
+                alert(`Ваш ответ: ${formula4}`);
+            } break;
+        }
+    } else {
+        switch(operation){
+            case 5: { 
+                const formula5 = Math.cos(numberA); 
+                console.log(`Ваш ответ: ${formula5}`); 
+                alert(`Ваш ответ: ${formula5}`);
+            } break;
+            case 6: { 
+                const formula6 = Math.sin(numberA);
+                console.log(`Ваш ответ: ${formula6}`); 
+                alert(`Ваш ответ: ${formula6}`);
+            } break;
+        }
     }
-    if( confirm("Хотите посчитать что-то еще?") == true){
-        countinueTest = true;
-    } else{
-        countinueTest = false;
-    }
-} while(countinueTest && operation == operation);
+} while(confirm('Хотите еще раз?'));
 
 
