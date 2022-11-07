@@ -27,34 +27,31 @@ do{
         break;
     } 
     let numberA = +prompt('Число А');
-    if(operation !== 5 || operation !==6){
+    if(operation !== 5 && operation !== 6){
+        let numberB = +prompt('Число B');
         switch(operation){
             case 1: {
-                let numberB = +prompt('Число B');
                 const formula1 = numberA + numberB;
                 console.log(`Ваш ответ: ${formula1}`); 
                 alert(`Ваш ответ: ${formula1}`);
             } break;
             case 2: {
-                let numberB = +prompt('Число B');
                 const formula2 = numberA - numberB;
                 console.log(`Ваш ответ: ${formula2}`); 
                 alert(`Ваш ответ: ${formula2}`);
             } break;
             case 3: { 
-                let numberB = +prompt('Число B');
                 const formula3 = numberA / numberB;
                 console.log(`Ваш ответ: ${formula3}`); 
                 alert(`Ваш ответ: ${formula3}`);
             } break;
             case 4: {
-                let numberB = +prompt('Число B');
                 const formula4 = numberA * numberB;
                 console.log(`Ваш ответ: ${formula4}`); 
                 alert(`Ваш ответ: ${formula4}`);
             } break;
         }
-    } else {
+    } else { 
         switch(operation){
             case 5: { 
                 const formula5 = Math.cos(numberA); 
