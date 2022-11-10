@@ -15,58 +15,31 @@
 // Результат каждой из операций нужно сохранять в массив и реализовать функцию вывода данного массива; 
 // в список операций добавить операцию history, если пользователь выбирает данную опцию - выводить историю операций
 
-let countinueTest = true;
-const summText = "Operation + finished with result:";
-const differenceText = "Operation - finished with result:";
-const multiplicationText = "Operation * finished with result:";
-const divisionText = "Operation / finished with result:";
-let summArray = [];
-let diffArray = [];
-let multArray = [];
-let divisArray = []; 
+let historyArr = [];
+let numberA, numberB, chooseOp;
 do{
-    let chooseOp = +prompt(`
-    Выбери операцию:
-        1 +;
-        2 -;
-        3 *;
-        4 /;
-    `);
-    if(chooseOp == chooseOp){
-        let numberA = +prompt('Введи число А');
-        let numberB = +prompt('Введи число B');
-        let summSen = summ(numberA, numberB);
-        let diffSen = summ(numberA, numberB);
-        let multSen = summ(numberA, numberB);
-        let divisSen = summ(numberA, numberB);
-        if(chooseOp == 1){
-            summArray.push(summSen);
-            console.log(`${summText} ${summSen}`);
-            alert(`${summText} ${summSen}`);
-        } else if (chooseOp == 2){
-            diffArray.push(diffSen);
-            console.log(`${differenceText} ${difference(numberA, numberB)}`);
-            alert(`${differenceText} ${difference(numberA, numberB)}`);
-        } else if (chooseOp == 3){
-            multArray.push(multSen);
-            console.log(`${multiplicationText} ${multiplication(numberA, numberB)}`); 
-            alert(`${multiplicationText} ${multiplication(numberA, numberB)}`); 
-        } else if (chooseOp == 4){
-            divisArray.push(divisSen);
-            console.log(`${divisionText} ${division(numberA, numberB)}`); 
-            alert(`${divisionText} ${division(numberA, numberB)}`); 
-        } else{
-            countinueTest = false;
-        }
-        if( confirm("Хотите посчитать что-то еще?") == true){
-            countinueTest = true;
-        } else{
-            countinueTest = false;
-        }
-    } else{
-        confirm("Не правильно указаны данные. Попробуй еще раз.") == false;
-    } 
-} while (countinueTest)
+    do{
+        chooseOp = +prompt(`
+        Выбери операцию:
+            1) +;   
+            2) -;   
+            3) *;  
+            4) /;
+            5) ^;  6) sin;  7) cos;
+            
+            Your History: ${historyArr}
+        `);
+    } while (chooseOp != chooseOp);
+    do{
+        numberA = +prompt('Введи число А');
+    } while( numberA != numberA);
+    if(chooseOp <= 5){
+        do{
+            numberB = +prompt('Введи число B');
+        } while(numberB != numberB);
+    }
+    showMess(chooseOp);
+} while (confirm('Eще разок?'));
    
 function summ(fNumber, sNumber){
     return fNumber + sNumber;
@@ -80,26 +53,62 @@ function multiplication(fNumber, sNumber){
 function division(fNumber, sNumber){
     return fNumber / sNumber;
 }
-
-function summArrayfunction(arr){
-    return arr;
+function sin(fNumber){
+    return Math.sin(fNumber);
 }
-function diffArrayfunction(arr){
-    return arr;
+function cos(fNumber){
+    return Math.cos(fNumber);
 }
-function multArrayfunction(arr){
-    return arr;
-}
-function divisArrayfunction(arr){
-    return arr;
+function pownumb(fNumber, sNumber){
+    return Math.pow(fNumber, sNumber);
 }
 
-console.log(`
-${summArrayfunction(summArray)}
-${diffArrayfunction(diffArray)}
-${multArrayfunction(multArray)}
-${divisArrayfunction(divisArray)}
-`);
-
-
-
+function showMess(fNumber){
+    
+    let summText = `Operation ${fNumber} finished with result:`;
+    switch(fNumber){
+        case 1: {
+            console.log(`${summText} ${summ(numberA, numberB)}`);
+            alert(`${summText} ${summ(numberA, numberB)}`);
+            historyArr.push(summ(numberA, numberB));
+            break;
+        };
+        case 2: {
+            console.log(`${summText} ${difference(numberA, numberB)}`);
+            alert(`${summText} ${difference(numberA, numberB)}`);
+            historyArr.push(difference(numberA, numberB));
+            break;
+        };
+        case 3: {
+            console.log(`${summText} ${multiplication(numberA, numberB)}`); 
+            alert(`${summText} ${multiplication(numberA, numberB)}`); 
+            historyArr.push(multiplication(numberA, numberB));
+            break;
+        };
+        case 4: {
+            console.log(`${summText} ${division(numberA, numberB)}`); 
+            alert(`${summText} ${division(numberA, numberB)}`); 
+            historyArr.push(division(numberA, numberB));
+            break;
+        };
+        case 5: {
+            console.log(`${summText} ${pownumb(numberA, numberB)}`); 
+            alert(`${summText} ${pownumb(numberA, numberB)}`); 
+            historyArr.push(pownumb(numberA, numberB));
+            break;
+        };
+        case 6: {
+            console.log(`${summText} ${sin(numberA)}`); 
+            alert(`${summText} ${sin(numberA)}`); 
+            historyArr.push(sin(numberA));
+            break;
+        };
+        case 7: {
+            console.log(`${summText} ${cos(numberA)}`); 
+            alert(`${summText} ${cos(numberA)}`); 
+            historyArr.push(cos(numberA));
+            break;
+        };
+    }
+    return fNumber;
+}
