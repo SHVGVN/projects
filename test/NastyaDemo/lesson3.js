@@ -1,4 +1,4 @@
-let numberA, numberB, operation
+let numberA, numberB, operation, result, history = []
 do{
     do{
         operation = +prompt(`Choose your operation: 
@@ -8,13 +8,14 @@ do{
         4 - /,
         5 - pow,
         6 - cos,
-        7 - sin`), []
+        7 - sin,
+        8- history`), []
     } while(operation!==operation)
-
-    do{
-        numberA = +prompt('Provide first operand'), []
-    }while(numberA !== numberA)
-
+    if(operation != 8 ){
+        do{
+            numberA = +prompt('Provide first operand'), []
+        }while(numberA !== numberA)
+    }
     if (operation <= 5){
         do{
             numberB = +prompt('Provide second operand'), []
@@ -33,7 +34,7 @@ function multi (firstOperand, secondOperand){
     return firstOperand * secondOperand
 }
 function delenie (firstOperand, secondOperand){
-    return firstOperand + secondOperand
+    return firstOperand / secondOperand
 }
 function pow (firstOperand, secondOperand){
     return Math.pow(firstOperand, secondOperand)
@@ -46,41 +47,61 @@ function cos(firstOperand){
 }
 
 function showMessage(operation, func){
-    let op;
-    let message = `Operation ${op} finished with result: ${func}`
+    let op;   
     switch(operation){
-        case 1 : op = '+'
+        case 1 : 
+            op = '+'
         break
-        case 2 : op = '-'
+        case 2 :   
+            op = '-'
         break
-        case 3 : op = '*'
+        case 3 : 
+            op = '*'
         break
-        case 4 : op = '\/'
+        case 4 : 
+            op = '\/'
         break
-        case 5 : op = 'pov'
+        case 5 : 
+            op = 'pov'
         break
-        case 6 : op = 'Sin'
+        case 6 : 
+            op = 'Sin'
         break
-        case 7 : op = 'Cos'
+        case 7 : 
+            op = 'Cos'
         break
     }
+    let message = `Operation ${op} finished with result: ${func}`
     alert(message)
 }
 function calculate(operation){
     switch(operation){
-        case 1 : showMessage(operation,summ(numberA, numberB))
+        case 1 : showMessage(operation,summ(numberA, numberB));
+        pushHistory(summ(numberA, numberB))
         break
-        case 2 : showMessage(operation, diff(numberA, numberB))
+        case 2 : showMessage(operation, diff(numberA, numberB));
+        pushHistory(diff(numberA, numberB));
         break
-        case 3 : showMessage(operation,multi(numberA, numberB))
+        case 3 : showMessage(operation,multi(numberA, numberB));
+        pushHistory(multi(numberA, numberB))
         break
-        case 4 : showMessage(operation,delenie(numberA, numberA))
+        case 4 : showMessage(operation,delenie(numberA, numberA));
+        pushHistory(delenie(numberA, numberB));
         break
-        case 5 : showMessage(operation,pow(numberA, numberB))
+        case 5 : showMessage(operation,pow(numberA, numberB));
+        pushHistory(pow(numberA, numberB))
         break
-        case 6 : showMessage(operation,sin(numberA))
+        case 6 : showMessage(operation,sin(numberA));
+        pushHistory(sin(numberA))
         break
-        case 7 : showMessage(operation,cos(numberA))
+        case 7 : showMessage(operation,cos(numberA));
+        pushHistory(cos(numberA))
         break
+        case 8: alert(history)
     }
 }
+function pushHistory(func){
+    history.push(func)
+}
+
+
